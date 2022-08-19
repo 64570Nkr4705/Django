@@ -45,5 +45,33 @@ def buscar(request):
     return HttpResponse(mensaje)
 
 def contacto(request):
+    if request.method == 'POST':
+        miForm = FormularioContacto(request.POST)
         
-    return render(request, 'contacto.html')
+        if miForm.is_valid():
+            infoForm = miForm.cleaned_data
+            
+            send_mail(infoForm['asunto'], infoForm['mensaje'],
+            infoForm.get('email', ' '), ['toongas777@gmail.com'],)
+            
+            return render(request, 'gracias.html')
+    
+    else:
+        miForm = FormularioContacto()
+        
+    return render(request, 'formulario_contacto.html', {'form':miForm})
+
+'''def contacto(request):
+    
+    if request.method == 'POST':
+        subject = request.POST['asunto']
+        
+        message = request.POST['mensaje'] + ' ' + request.POST['email']
+        
+        email_from = settings.EMAIL_HOST_USER
+        
+        send_mail(subject, message, email_from, recipient_list)
+        
+        return render(request, 'gracias.html')
+        
+    return render(request, 'contacto.html')'''

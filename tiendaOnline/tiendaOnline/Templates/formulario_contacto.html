@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h1>Contactanos</h1>
+
+        {% if form.errors %}
+
+        <p style="color": red;> Por favor revisa este campo</p>
+
+        {% endif %}
+
+        <form action="POST">
+            <Table>
+                {{ form.as_table}}
+            </Table>
+
+            <input type="submit" value="Enviar">
+        </form><
+    </body>
+    
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intor-img img-fluid mb-3 mb-lg-0 rounded" src="{{tienda.imagen.url}}" alt="" style="width: 50%">
+                <div class="intor-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-lower">{{tienda.nombre}}</span>
+                        <span class="section-heading-upper">{{tienda.}}</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock  %}
